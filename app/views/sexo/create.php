@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar DE SEXO Sexo</title>
+    <title>Registrar Sexo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,39 +11,65 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
         }
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
             text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
         }
         label {
             display: block;
             margin: 10px 0 5px;
             font-weight: bold;
+            color: #555;
         }
         input[type="text"] {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+        }
+        input[type="text"]:focus {
+            border-color: #6a11cb;
+            outline: none;
         }
         input[type="submit"] {
-            background-color: #28a745;
+            background: #28a745;
             color: white;
             border: none;
-            padding: 10px;
+            padding: 12px;
             width: 100%;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background 0.3s, transform 0.2s;
         }
         input[type="submit"]:hover {
-            background-color: #218838;
+            background: #218838;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -53,8 +79,10 @@
     <h2>Registrar Sexo</h2>
     <form action="../../controllers/SexoController.php?action=create" method="POST">
         <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" required placeholder="Ingrese el nombre">
-        <input type="submit" value="Crear">
+        <input type="text" name="nombre" id="nombre" required placeholder="Ingrese el nombre"
+               pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" maxlength="50"
+               title="Solo se permiten letras y espacios">
+        <input type="submit" value="Crear" aria-label="Crear nuevo registro de sexo">
     </form>
 </div>
 
